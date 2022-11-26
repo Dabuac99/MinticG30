@@ -1,5 +1,6 @@
 import express from "express"
 import { rutas } from "./routes/rutas.js"
+import partidopoliticoRepositorio from "./db/repositorios/partidopoliticoRepositorio.js"
 
 var app=express()
 
@@ -14,4 +15,5 @@ rutas(app)
 
 app.listen(PORT, HOST, ()=>{
     console.log(`Escuchando por el http://${HOST}:${PORT}`)
+    partidopoliticoRepositorio.crear()
 })

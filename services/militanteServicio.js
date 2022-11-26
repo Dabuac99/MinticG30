@@ -1,6 +1,9 @@
 import militanteRepositorio from "../db/repositorios/militanteRepositorio.js"
+import usuarioRepositorio from "../db/repositorios/usuarioRepositorio.js"
+import partidopoliticoRepositorio from "../db/repositorios/partidopoliticoRepositorio.js"
+import crypto from "crypto"
 
-const crearMilitante = (militante)=>{
+const crearMilitante = (militante, username)=>{
 
     return new Promise( (resolver, rechazar)=>{
 
@@ -10,8 +13,16 @@ const crearMilitante = (militante)=>{
             rechazar("Datos vacios")
         }
 
+        const usuario = usuarioRepositorio.buscarUsername(username)
+        const nombrepartidopol = partidopoliticoRepositorio.buscarid(militante.partidoPolitico)
+
+        militante.idMilitante = crypto.randomUUID()
+        militante.usuarioEntity = usuario
+        militante.nombrepartidopolEntity = nombrepartidopol
+
         militanteRepositorio.crear(militante)
-        resolver(militante)
+        resolver(militanteRepositorio.detalle(militante.idMilitante))
+        
     })
 
 }
@@ -19,7 +30,9 @@ const crearMilitante = (militante)=>{
 const leerMilitante = ()=>{
 
     return new Promise( (resolver, rechazar)=>{
+
         resolver(militanteRepositorio.leer())
+
     })
 }
 
