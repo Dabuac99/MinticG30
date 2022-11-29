@@ -12,4 +12,12 @@ function UsuarioDatosResModel(usuario){
     this.username = usuario.username   
 }
 
-export {UsuarioCrearReqModel, UsuarioDatosResModel}
+function UsuarioEntity(usuario){
+    this.idUsuario = usuario.idUsuario
+    this.nombre = usuario.nombre
+    this.email = usuario.email
+    this.username = usuario.username
+    this.passwordEncriptada = usuario.passwordEncriptada
+}
+
+export {UsuarioCrearReqModel, UsuarioDatosResModel, UsuarioEntity}

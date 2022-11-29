@@ -1,50 +1,48 @@
-var array=[]
+import { conexion } from "../conexionDB.js"
 
-const crear = (militante)=>{
-    array.push(militante)
+//var array=[]
+
+const coleccion = ()=>{
+    return conexion.obtenerDB().collection("militante")
+}
+
+const crear = async (militante)=>{
+    //array.push(militante)    
+    await coleccion().insertOne(militante)
 }
 
 //buscar todos
-const leer = ()=>{
-    return array
+const leer = async ()=>{
+    return await coleccion().find().toArray()
 }
 
-//buscar por id
-const detalle = (idMilitante)=>{
-    const militante = array.find(militante=> militante.idMilitante == idMilitante)
+//buscar por idMilitante
+const detalle = async (idMilitante)=>{
+    const militante = await coleccion().findOne({idMilitante: idMilitante})
 
     return militante ? militante : {}
 }
 
 //actualizar
-const actualizar = (militanteDetalle)=>{
-    const index = array.findIndex(militante=> militante.idMilitante == militanteDetalle.idMilitante)
+const actualizar = async (militanteDetalle)=>{
+    await coleccion().replaceOne({idMilitante: militanteDetalle.idMilitante}, militanteDetalle)
 
-    if(index != -1){
-        array[index] = militanteDetalle
-        return array[index]
-    }else{
-        return {}
-    }
 }
 
 //eliminar
-const eliminar = (idMilitante)=>{
-    const index = array.findIndex(militante=> militante.idMilitante == idMilitante)
+const eliminar = async (idMilitante)=>{
 
-    if(index != -1){
-        
-        array.splice(index, 1)
-    }
+    await coleccion().deleteOne({idMilitante: idMilitante})
 
 }
 
 //Datos Usuario conectado
-const misDatos = (idUsuario)=>{
+const misDatos = async (idUsuario)=>{
+   
+    const query = {"usuarioEntity.idUsuario": idUsuario}
+    const datos = await coleccion().find(query).toArray()
 
-    const datos = array.filter(militante=> militante.usuarioEntity.idUsuario == idUsuario)
-
-    return datos ? datos : {}
+    return datos ? datos : []
 }
 
 

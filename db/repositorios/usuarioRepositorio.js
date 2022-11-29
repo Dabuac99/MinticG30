@@ -1,17 +1,27 @@
-var array=[]
+import {conexion} from "../conexionDB.js"
 
-const crear = (usuario)=>{
-    array.push(usuario)
+//var array=[]
+
+const coleccion = ()=>{
+    return conexion.obtenerDB().collection("usuario")
 }
 
-const buscarUsername = (username)=>{
-    const usuario = array.find(usuario=>usuario.username == username)
 
+const crear = async (usuario)=>{
+    await coleccion().insertOne(usuario)
+}
+
+const buscarUsername = async (username)=>{
+    
+    const usuario = await coleccion().findOne({username: username})
+    
     return usuario ? usuario : null
+    
 }
 
-const buscarEmail = (email)=>{
-    const usuario = array.find(usuario=>usuario.email == email)
+const buscarEmail = async (email)=>{
+
+    const usuario = await coleccion().findOne({email: email})
 
     return usuario ? usuario : null
 }
