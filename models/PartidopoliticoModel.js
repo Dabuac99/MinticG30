@@ -1,15 +1,21 @@
 class PartidopoliticoDatosResModel{
-    constructor(partidoPolitico){
-        //console.log("ingresa a PartidopoliticoDatosResModel")
-        this.id = partidoPolitico.id
-        this.nombre = partidoPolitico.nombre
-        //console.log("id "+this.id + " nombre " +this.nombre)
-    }
-}
+     constructor(partidoPolitico){
+         this.id = partidoPolitico.id
+         this.nombre = partidoPolitico.nombre
+
+     }
+ }
+
+/* function PartidopoliticoDatosResModel(partidoPolitico){
+    this.id = partidoPolitico.id
+    this.nombre = partidoPolitico.nombre
+
+} */
 
 function PartidopoliticoEntity(partidoPolitico){
     this.id = partidoPolitico.id
     this.nombre = partidoPolitico.nombre
+
 }
 
 export {PartidopoliticoDatosResModel, PartidopoliticoEntity}

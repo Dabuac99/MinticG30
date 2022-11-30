@@ -27,7 +27,7 @@ function MilitanteDatosResModel(militante){
     this.telefono = militante.telefono
     this.partidoPolitico = militante.partidoPolitico
     this.usuarioEntity = new UsuarioDatosResModel(militante.usuarioEntity)
-    this.nombrepartidopolEntity = new PartidopoliticoDatosResModel(militante.partidoPolitico)
+    this.nombrepartidopolEntity = new PartidopoliticoDatosResModel(militante.nombrepartidopolEntity)
     
 }
 
@@ -56,7 +56,7 @@ function MilitanteEntity(militante){
     this.telefono = militante.telefono
     this.partidoPolitico = militante.partidoPolitico
     this.usuarioEntity = new UsuarioEntity(militante.usuarioEntity)
-    this.nombrepartidopolEntity = new PartidopoliticoEntity(militante.partidoPolitico)
+    this.nombrepartidopolEntity = new PartidopoliticoEntity(militante.nombrepartidopolEntity)
 }
 
 export {MilitanteCrearReqModel, MilitanteDatosResModel, MilitanteActualizarReqModel, MilitanteEntity}

@@ -7,7 +7,7 @@ const coleccion = ()=>{
 }
 
 const crear = async (militante)=>{
-    //array.push(militante)    
+    //array.push(militante)
     await coleccion().insertOne(militante)
 }
 
