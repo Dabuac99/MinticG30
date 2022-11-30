@@ -6,13 +6,14 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
-    "dev": "nodemon server.js"
+    "start": "set NODE_ENV=.env && node server.js",
+    "dev": "set NODE_ENV=.env.dev && nodemon server.js"
   },
   "author": "Grupo30",
   "license": "MIT",
   "dependencies": {
     "bcrypt": "^5.1.0",
+    "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "mongodb": "^4.12.1"
   },

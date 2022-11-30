@@ -1,7 +1,9 @@
 import { MongoClient } from "mongodb";
+import { variables } from "../utils/variables.js"
 
-//toco cambiar localhost por 0.0.0.0
-const url = "mongodb://0.0.0.0:27017"
+//toco cambiar localhost por 0.0.0.0 "mongodb://0.0.0.0:27017"
+const url = `${variables.MONGO_INSTANCE}://${variables.MONGO_HOST}:${variables.MONGO_PORT}`
+//console.log("url: " + url)
 const cliente = new MongoClient(url)
 const nombreBD = "apimilitantes"
 let baseDatos

@@ -2,11 +2,12 @@ import express from "express"
 import { rutas } from "./routes/rutas.js"
 import partidopoliticoRepositorio from "./db/repositorios/partidopoliticoRepositorio.js"
 import { conexion } from "./db/conexionDB.js"
+import { variables } from "./utils/variables.js"
 
 var app=express()
 
-const PORT="3000"
-const HOST="localhost"
+const PORT=variables.EXPRESS_PORT
+const HOST=variables.EXPRESS_HOST
 
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
